@@ -82,27 +82,41 @@ data_list=["And now here is my secret, a very simple secret: It is only with the
 "Will you draw me a sheep?",
 "It's good to have a friend. Even if you're going to die.",
 "If you love a flower that lives on a star, then it's good at night, to look up at the sky. All the stars are blossoming."]
+
+def nitherisgiven(li) :
+    for a in li :
+        if (a == "and") :
+            return False
+        elif (a == "or") :
+            return False
+    return True
+
 first = set()
 second = set()
-
 name = input("query :")
-out = name.split(" ")
-print(out)
-
+temp = name.split(" ")
+temp1 = set()
+op = "or"
+if (nitherisgiven(temp)) : op = "and"
+for t in temp :
+    if ( t == "and" ) :
+        op = "and"
+    elif ( t != "or" ) :
+        temp1.add(t)
+print( "Performing '" + op.upper() + "' search for: " + str(temp1) )
+out = list(temp1)
 for i, quote in enumerate(data_list):
     found_at = quote.find(out[0])
     if ( found_at >= 0):
         first.add(i)
 for i, quote in enumerate(data_list):
-    found_at2 = quote.find(out[2])
+    found_at2 = quote.find(out[1])
     if ( found_at2 >= 0):
         second.add(i)
-
-if(out[1] == "or") :
+if(op == "or") :
     output = first|second
 else:
     output = first&second
-print(output)
-
-for aaa in output :
-    print("Found " + str(aaa) + " " + data_list[aaa])
+output = sorted(output)
+for value in output :
+    print("Found " + str(value) + " " + data_list[value])
