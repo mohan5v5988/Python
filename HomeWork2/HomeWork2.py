@@ -90,9 +90,8 @@ def nitherisgiven(li) :
         elif (a == "or") :
             return False
     return True
-
-first = set()
-second = set()
+# main function
+array = []
 name = input("query :")
 temp = name.split(" ")
 temp1 = set()
@@ -105,18 +104,24 @@ for t in temp :
         temp1.add(t)
 print( "Performing '" + op.upper() + "' search for: " + str(temp1) )
 out = list(temp1)
-for i, quote in enumerate(data_list):
-    found_at = quote.find(out[0])
-    if ( found_at >= 0):
-        first.add(i)
-for i, quote in enumerate(data_list):
-    found_at2 = quote.find(out[1])
-    if ( found_at2 >= 0):
-        second.add(i)
-if(op == "or") :
-    output = first|second
-else:
-    output = first&second
-output = sorted(output)
-for value in output :
-    print("Found " + str(value) + " " + data_list[value])
+for a in range(0, len(out)) :
+    first = set()
+    for i, quote in enumerate(data_list):
+        found_at = quote.find(out[a])
+        if ( found_at >= 0):
+            first.add(i)
+    array.append(first)
+if not array[0] :
+    print("No string found")
+else :
+    if(op == "or") :
+        output = array[0] | array[1]
+        for i in range(2, len(array)) :
+            output = output | array[i]
+    else :
+        output = array[0] & array[1]
+        for i in range(2, len(array)) :
+            output = output & array[i]
+    output = sorted(output)
+    for value in output :
+        print("Found at " + str(value) + " " + data_list[value])
