@@ -81,10 +81,15 @@ data_list=["And now here is my secret, a very simple secret: It is only with the
 "It's good to have a friend. Even if you're going to die.",
 "If you love a flower that lives on a star, then it's good at night, to look up at the sky. All the stars are blossoming."]
 
-query=input("query:")
+#query=input("query:")
 
-for i,quote in enumerate(data_list):
-	words = quote.split()
-	for word in words:
-		if( query == word):
-			print("Found at ", i, quote[:80])
+#for i,quote in enumerate(data_list):
+#	words = quote.split()
+#	for word in words:
+#		if( query == word):
+#			print("Found at ", i, quote[:80])
+
+
+
+s = "the value of n is {0} "
+print(s.format("10"))
