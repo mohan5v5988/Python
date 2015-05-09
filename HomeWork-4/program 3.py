@@ -150,17 +150,19 @@ for value in output :
 dt2 = datetime.now()
 print("Execution time:", dt2.microsecond-dt1.microsecond)
 print("=============================================================================================")
+
 print("For Shelve : ")
 print("============")
+
 dt3 = datetime.now()
 if (op == "and") :
-    output = dictionary_data[out[0]] & dictionary_data[out[1]]
+    output = s[out[0]] & s[out[1]]
     for i in range(2, len(out)) :
-            output = output & dictionary_data[out[i]]
+            output = output & s[out[i]]
 else :
-    output = dictionary_data[out[0]] | dictionary_data[out[1]]
+    output = s[out[0]] | s[out[1]]
     for i in range(2, len(out)) :
-            output = output | dictionary_data[out[i]]
+            output = output | s[out[i]]
 output = sorted(output)
 for value in output :
     print("Found at " + str(value) + " " + data_list[value])
@@ -170,4 +172,4 @@ print()
 if ( (dt4.microsecond-dt3.microsecond) < (dt2.microsecond-dt1.microsecond) ) :
     print("The Shelve is faster by " + str( (dt2.microsecond-dt1.microsecond) - (dt4.microsecond-dt3.microsecond) ))
 else :
-    print("The Shelve is faster by " + str( (dt4.microsecond-dt3.microsecond) - (dt2.microsecond-dt1.microsecond) ))
+    print("The Dictionary is faster by " + str( (dt4.microsecond-dt3.microsecond) - (dt2.microsecond-dt1.microsecond) ))
