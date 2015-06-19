@@ -5,8 +5,7 @@ import sqlite3
 from Employee import Employee
 
 class DataBase:
-    #DBName = "Employee.sqlite"
-    DBName = "mm.sqlite"
+    DBName = "Employee.sqlite"
     @staticmethod
     def createTable():
         conn = sqlite3.connect(DataBase.DBName)
